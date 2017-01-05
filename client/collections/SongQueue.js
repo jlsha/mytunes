@@ -4,19 +4,27 @@ var SongQueue = Backbone.Collection.extend({
   model: SongModel,
 
   initialize: function() {
-    console.log(this);
-    var self = this;
-    this.on('add', this.playFirst, this);
+    this.on('add', function() {
+      if (this.models.length === 1) {
+        this.playFirst();
+      }
+    });
+
+    this.on('ended', function() {
+      this.shift();
+      if (this.models.length > 0) {
+        this.playFirst();
+      }
+    });
+
+    this.on('dequeue', function() {
+      this.shift();
+    });
 
   },
 
   playFirst: function () {
-    console.log('this.models', this.models);
-      
+    this.models[0].play();
   }
 
-
-
 });
-
-//http://stackoverflow.com/questions/8175054/backbone-js-collections-change-event-isnt-firing
