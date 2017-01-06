@@ -20,4 +20,4 @@ client
     ├── PlayerView.js          - defines a backbone view class for the music player.
     ├── SongQueueEntryView.js  - defines a backbone view class for the song
     │                            queue entries.
-    └── SongQueueView.js       - defines a backbone view class for the song queue.
+    └── SongQueueView.js       - defines a backbone view class for the song queue.song
